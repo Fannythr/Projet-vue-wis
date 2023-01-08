@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pokedex</title>
+  <!-- include Bootstrap and Vue.js libraries -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <!-- create a container element to hold our Pokedex -->
+  <div class="container mt-5" id="pokedex">
+    <!-- create a search bar -->
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search for a Pokemon..." v-model="searchQuery">
+    </div>
+    <!-- create a div to hold the list of Pokemon -->
+    <div class="list-group">
+
+      <!-- create a list item for each Pokemon -->
+      <a href="#" class="list-group-item list-group-item-action" v-for="pokemon in filteredPokemon" :key="pokemon.name" @click="getPokemon(pokemon.url)">
+         <!-- add an image for the Pokemon -->
+  <img :src="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon.url.split('/')[6] + '.png'" alt="Pokemon image" class="mr-3" width="50">
+        {{ pokemon.name }}
+      </a>
+
+      
+
+
+    </div>
+    <!-- create a div to hold the selected Pokemon's details -->
+    <div class="card mt-5" v-if="selectedPokemon">
+      <div class="card-header">
+        {{ selectedPokemon.name }}
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <strong>Type:</strong> {{ selectedPokemon.types[0].type.name }}
+        </li>
+        <li class="list-group-item" v-if="selectedPokemon.types.length > 1">
+          <strong>Type:</strong> {{ selectedPokemon.types[1].type.name }}
+        </li>
+        <li class="list-group-item">
+          <strong>Height:</strong> {{ selectedPokemon.height }}
+        </li>
+        <li class="list-group-item">
+          <strong>Weight:</strong> {{ selectedPokemon.weight }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- include our Vue.js script at the bottom of the page -->
+  <script src="pokedex.js"></script>
+</body>
+</html>
