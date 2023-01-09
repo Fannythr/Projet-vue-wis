@@ -2,19 +2,19 @@
 <html>
 <head>
   <title>Pokedex</title>
-  <!-- include Bootstrap and Vue.js libraries -->
+  <!--  Bootstrap et Vue.js librairie -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-  <!-- create a container element to hold our Pokedex -->
+  <!-- create a container element for the Pokedex -->
   <div class="container mt-5" id="pokedex">
     <!-- create a search bar -->
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search for a Pokemon..." v-model="searchQuery">
+      <input type="text" class="form-control" placeholder="Recherche d'un Pokemon..." v-model="searchQuery">
     </div>
-    <!-- create a div to hold the list of Pokemon -->
+    <!-- create a div for the list of Pokemon -->
     <div class="list-group">
 
       <!-- create a list item for each Pokemon -->
@@ -23,6 +23,9 @@
   <img :src="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon.url.split('/')[6] + '.png'" alt="Pokemon image" class="mr-3" width="50">
         {{ pokemon.name }}
       </a>
+
+
+
 
       
 
